@@ -12,3 +12,28 @@
 * JS
 * ECLIPSE V.13.7 & ECLIPSE V.16.1
 * WINDOWS OS
+## CODE EXAMPLES
+```
+import React, {useState, useEffect} from 'react';
+import { User } from './components/User';
+
+export const Users = () => {
+  const [users, setUsers] = useState([])
+
+  useEffect (() => {
+    fetch('https://jsonplaceholder.typicod.com/users')
+      .then(response => response.json())
+      .then(json => setUsers(json))
+  }, [setUsers])
+
+
+  return <div>
+    {
+      !users.length && <>Loading...</>
+    }
+    {
+      users.map((user) => <User user={user}/>)
+    }
+  </div>
+}
+```
